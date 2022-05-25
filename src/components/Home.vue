@@ -1,15 +1,12 @@
 <template>
   <div>
-    <h1>{{ msg }}</h1>
+    <h3>Welcome {{ $route.params.name }}</h3>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
-  }
+  name: 'HomePage'
 }
 </script>
 
