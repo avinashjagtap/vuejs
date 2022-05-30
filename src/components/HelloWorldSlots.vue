@@ -1,13 +1,16 @@
 <template>
-  <div>
-    <h3>Welcome {{ $route.params.name }}</h3>
+  <div class="hello">
+    <slot />
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HomePage'
-}
+  name: 'HelloWorldSlots',
+  props: {
+    msg: String,
+  },
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

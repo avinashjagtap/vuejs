@@ -1,32 +1,32 @@
 <template>
-  <div class="nav">
-      <router-link to="/home/Team">Home</router-link>
-      <router-link to="/conditional">Conditional</router-link>
-      <router-link to="/looping">Looping</router-link>
+  <div id="app">
+    <hello-world-props msg="Welcome to Your Vue.js App"/>
+    <hello-world-slots><h2>Welcome to Your Vue.js App</h2></hello-world-slots>
+    <NamedSlotExample>
+      <template v-slot:main>
+        <p>Custom Main</p>
+      </template>
+      <template v-slot:aside>
+        <p>Custom Aside</p>
+      </template>
+      <div>
+        <p>Custom Content</p>
+      </div>
+    </NamedSlotExample>
   </div>
-  <router-view />
-  <div class="footer">
-    <img v-bind:src="imgURL" v-bind:alt="imgDescription" width="150" height="100">
-  </div>
-  <!-- interating component -->
-  <HelloWorld msg="Welcome to Your Vue.js App"></HelloWorld>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
-import image from './assets/test.png';
+import HelloWorldProps from './components/HelloWorldProps.vue'
+import HelloWorldSlots from './components/HelloWorldSlots.vue'
+import NamedSlotExample from './components/NamedSlotExample.vue'
 
 export default {
   name: 'App',
-  data() {
-        return {
-            product: 'Vue 3 Course!',
-            imgURL: image,
-            imgDescription: 'An image with a desktop computer',
-        }
-    },
   components: {
-    HelloWorld
+    HelloWorldProps,
+    HelloWorldSlots,
+    NamedSlotExample
   }
 }
 </script>
@@ -39,13 +39,5 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
-}
-.nav, .footer {
-  background-color: bisque;
-}
-
-.nav a {
-  width: 50px;
-  margin-right: 10px;
 }
 </style>
