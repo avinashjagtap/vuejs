@@ -1,66 +1,23 @@
 <template>
-  <header>
-    <button @click="ex = 'ref'">ref</button>
-    <button @click="ex = 'reactive'">reactive</button>
-    <button @click="ex = 'computed'">computed</button>
-    <button @click="ex = 'watch'">watch</button>
-    <button @click="ex = 'lifecycle'">lifecycle</button>
-    <button @click="ex = 'global'">global</button>
-    <button @click="ex = 'reuse'">re-use</button>
-    <button @click="ex = 'readonly'">readonly</button>
-    <button @click="ex = 'templateref'">templateRef</button>
-  </header>
-  <main>
-    <ref-ex v-if="ex === 'ref'"/>
-    <reactive-ex v-else-if="ex === 'reactive'"/>
-    <computed-ex v-else-if="ex === 'computed'"/>
-    <watch-ex v-else-if="ex === 'watch'"/>
-    <lifecycle-ex v-else-if="ex === 'lifecycle'"/>
-    <shop-ex v-else-if="ex === 'global'"/>
-    <div v-else-if="ex === 'reuse'">
-      <likes-button/>
-      <heart-button/>
+  <div>
+      <div>{{ message }}</div>
+      <div>Count: {{ $store.state.count }}</div>
+      <button-counter />
     </div>
-    <readonly-ex v-else-if="ex === 'readonly'"/>
-    <template-ref-ex v-else-if="ex === 'templateref'"/>
-  </main>
-  <footer>
-    <p>
-      Composition API Demo
-    </p>
-  </footer>
 </template>
 
 <script>
-import { ref } from 'vue'
-import RefEx from '@/components/refEx/refEx.vue';
-import ReactiveEx from '@/components/reactiveEx/reactiveEx.vue';
-import computedEx from '@/components/computedEx/computedEx.vue';
-import watchEx from '@/components/watchEx/watchEx.vue';
-import lifecycleEx from '@/components/lifecycleEx/lifecycleEx.vue';
-import shopEx from '@/components/global/shopEx.vue';
-import heartButton from '@/components/reuse/HeartButton.vue';
-import likesButton from '@/components/reuse/LikesButton.vue';
-import readonlyEx from '@/components/readonlyEx/readonlyEx.vue';
-import templateRefEx from '@/components/templateRef/templateRefEx.vue';
+import ButtonCounter from '@/components/ButtonCounter';
 export default {
   name: 'App',
   components: {
-    RefEx,
-    ReactiveEx,
-    computedEx,
-    watchEx,
-    lifecycleEx,
-    shopEx,
-    heartButton,
-    likesButton,
-    readonlyEx,
-    templateRefEx
+    ButtonCounter
   },
-  setup(){
-    const ex = ref('ref')
-    return { ex }
-  }
+  data: function () {
+    return {
+      message: 'Hello Vue!'
+    }
+  },
 }
 </script>
 
